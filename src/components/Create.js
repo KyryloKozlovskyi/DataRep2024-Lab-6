@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 // Create component
 const Create = () => {
@@ -8,11 +9,22 @@ const Create = () => {
     const [year, setYear] = useState(''); // manages year state
     const [poster, setPoster] = useState(''); // manages poster state
 
-    // Logs data submited to the form to the console
+    // create.js
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, year, poster); // Logs data to the console
-    }
+
+        console.log(`Title: ${title}, Year: ${year}, Poster: ${poster}`);
+
+        const movie = {
+            title: title,
+            year: year,
+            poster: poster
+        };
+
+        axios.post('http://localhost:4000/api/movies', movie)
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err.data));
+    };
 
     // Returns the relevant message
     return (
