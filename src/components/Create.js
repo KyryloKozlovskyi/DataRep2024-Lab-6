@@ -13,14 +13,16 @@ const Create = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(`Title: ${title}, Year: ${year}, Poster: ${poster}`);
+        console.log(`Title: ${title}, Year: ${year}, Poster: ${poster}`); // Log movie data
 
+        // Movie format
         const movie = {
             title: title,
             year: year,
             poster: poster
         };
 
+        // POST call to the server
         axios.post('http://localhost:4000/api/movies', movie)
             .then((res) => console.log(res.data))
             .catch((err) => console.log(err.data));

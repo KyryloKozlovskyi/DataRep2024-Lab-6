@@ -11,7 +11,7 @@ const Read = () => {
     const [movies, setMovies] = useState([]);
 
     // React hook, useEffect, to synchronize a component with an external system
-    // HTTP GET call returns the JSON data from
+    // HTTP GET call returns the JSON data
     useEffect(() => {
         axios.get("http://localhost:4000/api/movies").then((responce) => { // API Call
             console.log(responce.data); // Log Obj to the console
